@@ -96,5 +96,6 @@ function draw() {
     ry2 = sy1 + move_radius * sin(rotatingfactor + rotatinc)
     // point(rx,ry)
     line(rx, ry, rx2, ry2)
+    //new code coming
 
 }
