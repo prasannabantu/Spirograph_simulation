@@ -1,0 +1,104 @@
+function setup() {
+  width=600;
+  height=600;
+  createCanvas(width,height);
+  smallfactor=0;
+  rotatingfactor=0;
+  flag1=0
+  flag2=0
+  flag3=0
+  flag4=0
+//  backcolor=(0,0,0)
+  //  backcolor=(255,182,193)
+    backcolor=(139,69,19)
+
+  //Incrementers
+  //smallinc=7
+  rotatinc=0.7
+  background(backcolor);
+  slider = createSlider(0, 15, 2, 0.3);
+    slider.position(10, 10);
+    slider.style('width', '180px');
+  //Slider
+
+  slider2 = createSlider(0, 15, 7, 0.7);
+  slider2.position(300, 10);
+  slider2.style('width', '180px');
+
+  slider3= createSlider(30, 180, 80, 10);
+  slider3.position(300,580);
+  slider3.style('width', '180px');
+
+  slider4= createSlider(30, 180, 80, 10);
+  slider4.position(10,580);
+  slider4.style('width', '180px');
+
+
+
+}
+
+function draw() {
+
+  //Initial Conditions
+  noFill()
+  loop()
+ stroke(124,252,0); //Green
+  //stroke(255,215,0)  //Gold
+  strokeWeight(4,5)
+  // background(40,180,180);
+
+  //Bigger Circle condition
+  Big_circle_diameter=300
+  Big_circle_radius=Big_circle_diameter/2;
+  translate(width/2,height/2);
+  // circle(0,0,Big_circle_diameter);
+
+  //Inner Circle
+  temp=Big_circle_diameter/4
+  Small_circle_diameter=temp;
+  Small_circle_radius=Small_circle_diameter/2
+
+  if(flag1!=slider.value()||flag2!=slider2.value()||flag3!=slider3.value()||flag4!=slider4.value())
+  background(backcolor)
+  //Radial distance from the centre of bigger Circle
+  temp2=120
+//  R=temp2;
+flag3=slider3.value()
+R=slider3.value()
+
+  angleMode(DEGREES);
+
+
+  //for small circle
+
+
+  smallinc=slider.value()
+  flag1=slider.value()
+  smallfactor+=smallinc;
+  smallx=R*cos(smallfactor);
+  smally=R*sin(smallfactor);
+
+  flag4=slider4.value()
+  move_radius=slider4.value()
+  // circle(smallx,smally,Small_circle_radius);
+
+  rotatinc=slider2.value()
+  flag2=slider2.value()
+  rotatingfactor+=rotatinc;
+
+  rx=smallx+move_radius*cos(rotatingfactor)
+  ry=smally+move_radius*sin(rotatingfactor)
+
+  sx1=R*cos(smallfactor+smallinc);
+  sy1=R*sin(smallfactor+smallinc);
+
+  rx2=sx1+move_radius*cos(rotatingfactor+rotatinc)
+  ry2=sy1+move_radius*sin(rotatingfactor+rotatinc)
+  // point(rx,ry)
+  line(rx,ry,rx2,ry2)
+
+}
+
+
+
+
